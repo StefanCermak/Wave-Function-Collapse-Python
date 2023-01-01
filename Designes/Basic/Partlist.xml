@@ -1,0 +1,4 @@
+<Parts>
+    <Part File="Grass.png" N="g" E="g" S="g" W="g" />
+    <Part File="Road_T.png"  N="r" E="g" S="r" W="r" turns="0123" />
+</Parts>
