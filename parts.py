@@ -24,26 +24,48 @@ class ClassPart:
             if self.ConnectorW != part.ConnectorE:
                 self.bannsW.add(part)
 
-    def __init__(self, size, folder_offset, part, rotate=0):
+            if part.type in self.bannType["N"]:
+                self.bannsN.add(part)
+                part.bannsS.add(self)
+            if part.type in self.bannType["E"]:
+                self.bannsE.add(part)
+                part.bannsW.add(self)
+            if part.type in self.bannType["S"]:
+                self.bannsS.add(part)
+                part.bannsN.add(self)
+            if part.type in self.bannType["W"]:
+                self.bannsW.add(part)
+                part.bannsE.add(self)
+
+    def __init__(self, size, folder_offset, part_xml, rotate=0):
         self.bannsW = set()
         self.bannsS = set()
         self.bannsE = set()
         self.bannsN = set()
+        self.bannType = {"N": set(), "E": set(), "S": set(), "W": set()}
 
         self.image = \
             pygame.transform.rotate(  # rotates counterclockwise
                 pygame.transform.smoothscale(
-                    pygame.image.load(os.path.join("Designes", folder_offset, part.attrib["File"])),
+                    pygame.image.load(os.path.join("Designes", folder_offset, part_xml.attrib["File"])),
                     (size + 1, size + 1)
                 ),
                 rotate * 90
             )
-        self.ConnectorN = ClassConnector(part.attrib[rotate_compass("N", rotate)])
-        self.ConnectorE = ClassConnector(part.attrib[rotate_compass("E", rotate)])
-        self.ConnectorS = ClassConnector(part.attrib[rotate_compass("S", rotate)])
-        self.ConnectorW = ClassConnector(part.attrib[rotate_compass("W", rotate)])
+        self.ConnectorN = ClassConnector(part_xml.attrib[rotate_compass("N", rotate)])
+        self.ConnectorE = ClassConnector(part_xml.attrib[rotate_compass("E", rotate)])
+        self.ConnectorS = ClassConnector(part_xml.attrib[rotate_compass("S", rotate)])
+        self.ConnectorW = ClassConnector(part_xml.attrib[rotate_compass("W", rotate)])
 
-        self.Name = f'{part.attrib["File"].split(".")[0]:<10} - R {rotate}'
+        for bann in part_xml.iter("Bann"):
+            self.bannType[rotate_compass(bann.attrib["direction"], 4-rotate)].add(bann.attrib["type"])
+
+        if "type" in part_xml.attrib:
+            self.type = part_xml.attrib["type"]
+        else:
+            self.type = "default"
+
+        self.Name = f'{part_xml.attrib["File"].split(".")[0]:<10} - R {rotate}'
 
     def __str__(self):
         return f"ClassPart : {self.Name:<20} {self.ConnectorN} {self.ConnectorE} {self.ConnectorS} {self.ConnectorW}"

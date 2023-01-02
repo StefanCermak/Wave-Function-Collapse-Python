@@ -54,7 +54,7 @@ class ClassGrid:
         else:
             return None
 
-    def update_possible_parts(self):
+    def update_possible_parts(self) -> bool:
         for Row in range(self.rows):
             for Col in range(self.cols):
                 self.Field[Row][Col].neighborhood(
@@ -91,6 +91,16 @@ class ClassGrid:
                     return False
         return True
 
+    def clean_zeros(self):
+        for Row in range(self.rows):
+            for Col in range(self.cols):
+                if len(self.Field[Row][Col].possibleParts) == 0:
+                    for dRow in [-1, 0, 1]:
+                        for dCol in [-1, 0, 1]:
+                            if self.get_field(Row + dRow, Col + dCol) is not None:
+                                self.Field[Row + dRow][Col + dCol].Part = None
+        self.update_possible_parts()
+
     def start_collapse(self):
 
         self.update_possible_parts()
@@ -106,7 +116,8 @@ class ClassGrid:
                 self.collapse_next()
                 solving = not self.is_solved()
                 self.draw()
-                self.update_possible_parts()
+                if not self.update_possible_parts():
+                    self.clean_zeros()
 
     def draw(self):
         self.screen.fill((0, 0, 0))

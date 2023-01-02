@@ -1,0 +1,36 @@
+<Parts>
+    <Part File="pcb.png"           N="   " E="   " S="   " W="   "              />
+    <Part File="via_1.png"         N="   " E=" c " S="   " W="   " turns="0123" />
+    <Part File="via_2.png"         N="   " E=" c " S="   " W=" c " turns="01"   />
+    <Part File="copper_I.png"      N="   " E=" c " S="   " W=" c " turns="01"   />
+    <Part File="copper_T.png"      N="   " E=" c " S=" c " W=" c " turns="0123" />
+    <Part File="copper_d.png"      N="   " E="   " S=" c " W=" c " turns="0123" />
+    <Part File="copper_dd.png"     N=" c " E=" c " S=" c " W=" c " turns="01"   />
+    <Part File="chip.png"          N="CCC" E="CCC" S="CCC" W="CCC"              />
+    <Part File="chip_pin.png"      N="C  " E=" c " S="  C" W="CCC" turns="0123" type="pin">
+        <Bann direction="W" type="pin"/>
+    </Part>
+    <Part File="chip_edge.png"     N="C  " E="   " S="   " W="  C" turns="0123" type="chip_edge">
+        <Bann direction="N" type="chip_edge" />
+        <Bann direction="W" type="chip_edge" />
+    </Part>
+    <Part File="via_wire.png"      N="   " E=" w " S="   " W="   " turns="01"   />
+    <Part File="via_wire_1.png"    N="   " E=" w " S=" c " W="   " turns="0123" />
+    <Part File="via_wire_2.png"    N="   " E=" w " S="   " W=" c " turns="01"   />
+    <Part File="via_wire_3.png"    N=" c " E=" w " S="   " W="   " turns="0123" />
+    <Part File="via_wire_13.png"   N=" c " E=" w " S=" c " W="   " turns="0123" />
+    <Part File="wire.png"          N="   " E=" w " S="   " W=" w " turns="01"   type="wire"/>
+    <Part File="wire_x_copper.png" N=" c " E=" w " S=" c " W=" w " turns="01"   type="wire"/>
+    <Part File="R.png"             N="   " E=" w " S="   " W=" w " turns="01"   type="R">
+        <Bann direction="W" type="wire"/>
+        <Bann direction="E" type="wire"/>
+        <Bann direction="W" type="R"   />
+        <Bann direction="E" type="R"   />
+    </Part>
+    <Part File="R_copper.png"      N=" c " E=" w " S=" c " W=" w " turns="01"   type="R">
+        <Bann direction="W" type="wire"/>
+        <Bann direction="E" type="wire"/>
+        <Bann direction="W" type="R"   />
+        <Bann direction="E" type="R"   />
+    </Part>
+</Parts>
