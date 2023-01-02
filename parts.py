@@ -34,7 +34,7 @@ class ClassPart:
             pygame.transform.rotate(  # rotates counterclockwise
                 pygame.transform.smoothscale(
                     pygame.image.load(os.path.join("Designes", folder_offset, part.attrib["File"])),
-                    (size, size)
+                    (size + 1, size + 1)
                 ),
                 rotate * 90
             )
@@ -69,7 +69,7 @@ class ClassParts:
             Part.set_banns(self.PartList)
 
     def __str__(self):
-        result="Loaded Parts\n"
+        result = "Loaded Parts\n"
         for Part in self.PartList:
             result = result + str(Part) + "\n"
         return result
