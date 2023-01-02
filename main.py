@@ -1,7 +1,7 @@
 from globals import *
 from parts import ClassParts
 from grid import ClassGrid
-
+from configdialog import ClassConfigDialog
 
 class ClassWaveCollapseFunction:
     def __init__(self, design, window_width, parts_per_col, parts_per_row):
@@ -14,10 +14,12 @@ class ClassWaveCollapseFunction:
 
 
 if __name__ == '__main__':
+    Dialog=ClassConfigDialog()
+    Dialog.run()
     WCF = ClassWaveCollapseFunction(
-        DEFAULT_PART_SET,
-        DEFAULT_WINDOW_WIDTH,
-        DEFAULT_PIECES_PER_COL,
-        DEFAULT_PIECES_PER_ROW
+        Dialog.design,
+        Dialog.window_width,
+        Dialog.pieces_per_col,
+        Dialog.pieces_per_row
     )
     WCF.start()

@@ -45,13 +45,13 @@
         <Bann direction="W" type="comp"/>
         <Bann direction="E" type="comp"/>
     </Part>
-    <Part File="diode.png"             N="   " E=" w " S="   " W=" w " turns="01"   type="comp">
+    <Part File="diode.png"         N="   " E=" w " S="   " W=" w " turns="01"   type="comp">
         <Bann direction="W" type="wire"/>
         <Bann direction="E" type="wire"/>
         <Bann direction="W" type="comp"/>
         <Bann direction="E" type="comp"/>
     </Part>
-    <Part File="diode_copper.png"      N=" c " E=" w " S=" c " W=" w " turns="01"   type="comp">
+    <Part File="diode_copper.png"  N=" c " E=" w " S=" c " W=" w " turns="01"   type="comp">
         <Bann direction="W" type="wire"/>
         <Bann direction="E" type="wire"/>
         <Bann direction="W" type="comp"/>

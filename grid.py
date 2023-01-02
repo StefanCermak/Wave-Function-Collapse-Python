@@ -111,6 +111,7 @@ class ClassGrid:
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    pygame.image.save(self.screen, "WFC.png")
                     running = False
             if solving:
                 self.collapse_next()
@@ -135,6 +136,6 @@ class ClassGrid:
             for Col in range(self.cols):
                 field = self.get_field(Row, Col)
                 if field.Part is not None:
-                    print(f"{Row} {Col} {field.Part}")
+                    #print(f"{Row} {Col} {field.Part}")
                     self.screen.blit(field.Part.image, (field.x, field.y))
         pygame.display.flip()
